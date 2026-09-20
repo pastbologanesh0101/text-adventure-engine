@@ -1,0 +1,135 @@
+{
+  "title": "The Manor of Whispering Stone",
+  "start_room": "entrance_hall",
+  "dark_message": "It's pitch black and you can't see a thing. You feel your way back before you trip over something.",
+  "win": {
+    "room": "treasure_room",
+    "requires_items": ["gold_crown"],
+    "message": "The crown gleams in your hands. You have found the lost treasure of Whispering Stone. YOU WIN!"
+  },
+  "rooms": {
+    "entrance_hall": {
+      "name": "Entrance Hall",
+      "description": "A grand entrance hall with a faded red carpet leading north. Cobwebs cling to the corners of the ceiling.",
+      "exits": {
+        "north": {"to": "great_hall"}
+      },
+      "items": [],
+      "features": {
+        "carpet": "A once-luxurious red carpet, now moth-eaten and threadbare."
+      }
+    },
+    "great_hall": {
+      "name": "Great Hall",
+      "description": "A vast hall with a suit of armor standing guard and a dust-covered chandelier overhead.",
+      "exits": {
+        "south": {"to": "entrance_hall"},
+        "north": {"to": "library"},
+        "east": {"to": "vault", "locked": true, "key": "brass_key"},
+        "west": {"to": "cellar_stairs"}
+      },
+      "items": [],
+      "features": {
+        "armor": "A suit of plate armor, empty and silent, its visor rusted shut.",
+        "chandelier": "A crystal chandelier, thick with dust, swinging gently though there is no wind."
+      }
+    },
+    "library": {
+      "name": "Library",
+      "description": "Dusty shelves of forgotten books line every wall. A rusty lever protrudes from the wall near the fireplace.",
+      "exits": {
+        "south": {"to": "great_hall"},
+        "down": {"to": "secret_room", "locked": true, "requires_flag": "lever_pulled"}
+      },
+      "items": ["brass_key", "lever"],
+      "features": {
+        "shelves": "Rows of decaying books, their titles long faded."
+      }
+    },
+    "secret_room": {
+      "name": "Secret Room",
+      "description": "A hidden room revealed by the lever. A single torch rests on a stone pedestal.",
+      "exits": {
+        "up": {"to": "library"}
+      },
+      "items": ["torch"],
+      "features": {
+        "pedestal": "A stone pedestal, carved with symbols you don't recognize."
+      }
+    },
+    "cellar_stairs": {
+      "name": "Cellar Stairs",
+      "description": "Rickety wooden stairs descend into darkness below.",
+      "exits": {
+        "east": {"to": "great_hall"},
+        "down": {"to": "cellar"}
+      },
+      "items": [],
+      "features": {
+        "stairs": "Old wooden stairs, groaning under their own weight."
+      }
+    },
+    "cellar": {
+      "name": "Cellar",
+      "description": "A cold stone cellar. Your torchlight flickers over old barrels and crates.",
+      "dark": true,
+      "exits": {
+        "up": {"to": "cellar_stairs"},
+        "north": {"to": "treasure_room"}
+      },
+      "items": [],
+      "features": {
+        "barrels": "Old wine barrels, long since empty."
+      }
+    },
+    "vault": {
+      "name": "Vault",
+      "description": "A small stone vault. A golden crown rests on a velvet cushion.",
+      "exits": {
+        "west": {"to": "great_hall"}
+      },
+      "items": ["gold_crown"],
+      "features": {
+        "cushion": "A faded velvet cushion, once fit for royalty."
+      }
+    },
+    "treasure_room": {
+      "name": "Treasure Room",
+      "description": "A small chamber glittering faintly with old coins scattered across the floor.",
+      "exits": {
+        "south": {"to": "cellar"}
+      },
+      "items": [],
+      "features": {
+        "coins": "Scattered gold and silver coins, remnants of a forgotten hoard."
+      }
+    }
+  },
+  "items": {
+    "brass_key": {
+      "name": "Brass Key",
+      "description": "A small tarnished brass key.",
+      "takeable": true,
+      "unlocks_exit": {"room": "great_hall", "direction": "east"}
+    },
+    "lever": {
+      "name": "Lever",
+      "description": "A rusty iron lever set into the wall.",
+      "takeable": false,
+      "sets_flag": "lever_pulled",
+      "use_message": "You pull the lever. Somewhere in the manor, stone grinds against stone."
+    },
+    "torch": {
+      "name": "Torch",
+      "description": "A wooden torch, its flame burning steady and bright.",
+      "takeable": true,
+      "is_light_source": true,
+      "use_message": "The torch burns brightly, casting light around you."
+    },
+    "gold_crown": {
+      "name": "Gold Crown",
+      "description": "An ornate golden crown, set with faded jewels.",
+      "takeable": true
+    }
+  }
+}
